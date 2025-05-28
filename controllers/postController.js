@@ -17,10 +17,10 @@ const index = (req, res) => {
 }
 
 
-// rotta delete
+// metodo delete
 const destroy = (req, res) => {
 
-    // recupero tuti i posts dal db
+    // recupero tutti i posts dal db
     const sql = `DELETE FROM posts WHERE id = ?`
 
     // eseguo la query
@@ -33,6 +33,20 @@ const destroy = (req, res) => {
     })
 }
 
+// metodo show
+const show = (req, res) => {
+    const sql = `SELECT * FROM posts WHERE id = ?`
+
+    // eseguo la query
+    connection.query(sql, [req.params.id], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'database query failed' })
+        }
+        console.log(results)
+        res.json(results)
+    })
+}
 
 
-module.exports = { index, destroy }
+
+module.exports = { index, destroy, show }

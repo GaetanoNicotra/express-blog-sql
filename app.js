@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+// recupero il router
 const postsRouter = require('./routers/post')
 
 //middleware
