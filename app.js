@@ -10,13 +10,13 @@ app.use(express.static('public'))
 
 app.use(express.json());
 
+// recupero le rotte
 app.use('/posts', postsRouter)
 
 // rotta base
 app.get("/", (req, res) => {
     res.json('Benvenuto nella Hompage dei miei posts')
 });
-
 
 
 // metto in ascolto il server sulla porta 3000

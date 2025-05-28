@@ -11,5 +11,5 @@ router.delete("/elimina/:id", controller.destroy)
 // rotta che modifica un post
 router.get("/dettaglio/:id", controller.show)
 
-
+// esporto le rotte
 module.exports = router;

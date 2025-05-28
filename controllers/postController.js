@@ -3,6 +3,7 @@ const connection = require('../data/db')
 
 // metodo index
 const index = (req, res) => {
+
     // recupero tuti i posts dal db
     const sql = "SELECT * FROM posts"
 
@@ -33,9 +34,12 @@ const destroy = (req, res) => {
     })
 }
 
+
 // metodo show
 const show = (req, res) => {
-    const sql = `SELECT * FROM posts WHERE id = ?`
+
+    // recupero il post con l'id cercato
+    const sql = `SELECT * FROM posts JOIN posts_tag ON tags.id = posts_tag.id WHERE id = ?`
 
     // eseguo la query
     connection.query(sql, [req.params.id], (err, results) => {
@@ -47,6 +51,5 @@ const show = (req, res) => {
     })
 }
 
-
-
+// esporto le rotte
 module.exports = { index, destroy, show }
